@@ -33,69 +33,90 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <img width="500" src="images/cassandra_logo.png">
+          <img width=440px src="images/cassandra_logo.png">
         </section>
-        
-        
-        <section data-markdown>
-          ### Cassandra ###
-          - Distributed
-          - Scalable
-          - High availibility
-          - Database
+        <section data-markdown 
+          data-separator="^----\n$" 
+          data-separator-vertical="^--\n$">
+          <script type="text/template">
+            ### Cassandra ###
+            - Distributed
+            - Scalable
+            - High availibility
+            - Database
+
+            ----
+
+            ### ACID ###
+            - Atomicity
+            - Consistency
+            - Isolation
+            - Durability
+
+            ----
+
+            ### scaling ###
+              - network storage
+              - master-slave
+              - sharding
+              - masterless
+
+            ----
+
+            ### Data partition ###
+
+            ----
+
+            ![Cassandra Token](images/cassandra_token_wo_vnodes.png)
+
+            ----
+
+            ![Cassandra Vnodes](images/cassandra_token.png)
+
+            ----
+
+            ### Write Path ###
+
+            ----
+
+            ### Read Path ###
+
+            ----
+
+            ### Replication ###
+            - Replication Factor
+            - Replication Strategy
+              - SimpleStrategy
+              - NetworkTopology
+
+            ----
+
+            ### Snitches ###
+            - SimpleSnitch
+            - RackInferringSnitch
+            - PropertyFileSnitch
+            - GossipingPropertyFileSnitch
+            - CloudstackSnitch
+            - GoogleCloudSnitch
+            - EC2Snitch
+            - EC2MultiRegionSnitch
+
+            ----
+
+            ### Consitency ###
+            - ANY
+            - ONE
+            - TWO
+            - THREE
+            - QUORUM
+            - SERIAL
+            - LOCAL_ONE
+            - LOCAL_QUORUM
+            - LOCAL_SERIAL
+            - EACH_QUORUM
+            - ALL
+          </script>
         </section>
-        
-        <section data-markdown>
-          ### ACID ###
-          - Atomicity
-          - Consistency
-          - Isolation
-          - Durability
-        </section>
-        
-        <section data-markdown>
-          ### scaling ###
-            - network storage
-            - master-slave
-            - sharding
-            - masterless
-        </section>
-        
-        <section>
-          ### Data partition ###
-        </section>
-        
-        <section>
-          <img src="images/cassandra_token_wo_vnodes.png">
-        </section>
-        
-        <section>
-          <img src="images/cassandra_token.png">
-        </section>
-        
-        <section>
-          ### Replication ###
-        </section>
-        
-        <section>
-          ### Write Path ###
-        </section>
-        
-        <section>
-          ### Read Path ###
-        </section>
-        
-        <section>
-        </section>
-        
-        <section>
-        </section>
-        
-        <section>
-        </section>
-        <section>
-        </section>
-        <section>Slide 2</section>
       </div>
     </div>
 
