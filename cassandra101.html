@@ -33,55 +33,79 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <img width=440px src="images/cassandra_logo.png">
+          <img width="420" src="images/cassandra_logo.png">
         </section>
         <section data-markdown 
           data-separator="^----\n$" 
           data-separator-vertical="^--\n$"
+          data-separator-notes="^Note:"
           data-attributes="--attr=(.*?)$" >
           <script type="text/template">
-            ### Cassandra ###
-            - Distributed
-            - Scalable
-            - High availability
-            - Database
+            ### Apache Cassandra ###
+
+            - Distributed <!-- .element: class="fragment" -->
+            - Scalable <!-- .element: class="fragment" -->
+            - High availability <!-- .element: class="fragment" -->
+            - Database <!-- .element: class="fragment" -->
 
             ----
 
             ### ACID ###
-            - Atomicity
-            - Consistency
-            - Isolation
-            - Durability
+            - Atomicity <!-- .element: class="fragment" -->
+            - Consistency <!-- .element: class="fragment" -->
+            - Isolation <!-- .element: class="fragment" -->
+            - Durability <!-- .element: class="fragment" -->
 
             ----
 
             ### Scaling ###
-              - availability
               - read workload
               - write workload
 
-              - network storage
-              - master-slave
-              - sharding
-              - masterless
+            Note: 
+            - vertical
+            - horizontal
 
             ----
+
+            ### Master-Slave ###
+            - Replication
+
+            ----
+
+            ### Sharding ###
+            - Sharding key
+            - Hot shard!!!
+            - Scale???
+
+            ----
+
             ### CAP ###
-            - Consistency
-            - Availability
-            - Partition Tolerance
+            - Consistency <!-- .element: class="fragment" -->
+            - Availability <!-- .element: class="fragment" -->
+            - Partition Tolerance <!-- .element: class="fragment" -->
+
+            --
+
+            ### Consistency Level ###
+            - Write
+            - Read
+            - Quorum
+            - Strong Consistency
+
+            --
+
+            ### Example ###
+            - Write / Read replication factor = 3
+
             ----
 
-            ### Data partition ###
+            ### Cassandra ###
+            <img src="images/cassandra_troy.png" width="420"> <!-- .element: class="fragment" -->
 
             ----
 
-            ![Cassandra Token](images/cassandra_token_wo_vnodes.png)
-
-            ----
-
-            ![Cassandra Vnodes](images/cassandra_token.png)
+            ### Installation & Configuration ###
 
             ----
 
@@ -93,13 +117,26 @@
 
             ----
 
+            ### Multiple Datacenter ###
+            
+
+            --
+
+            ![Cassandra Token](images/cassandra_token_wo_vnodes.png)
+
+            --
+
+            ![Cassandra Vnodes](images/cassandra_token.png)
+
+            --
+
             ### Replication ###
             - Replication Factor
             - Replication Strategy
               - SimpleStrategy
               - NetworkTopology
 
-            ----
+            --
 
             ### Snitches ###
             - SimpleSnitch
@@ -111,7 +148,7 @@
             - EC2Snitch
             - EC2MultiRegionSnitch
 
-            ----
+            --
 
             ### Consitency ###
             - ANY
@@ -137,11 +174,6 @@
             <!-- --attr=data-background="white" -->
             <img src="images/arc_write-multiple_dc.svg" width="420">
 
-            ----
-
-            ### Multiple Datacenter ###
-            ![multi dc](images/multiple_datacenter.png)
-            
           </script>
         </section>
       </div>
@@ -162,6 +194,8 @@
           { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
       });
+
+      Reveal.configure({ slideNumber: 'c/t' });
     </script>
   </body>
 </html>
