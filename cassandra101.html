@@ -37,12 +37,13 @@
         </section>
         <section data-markdown 
           data-separator="^----\n$" 
-          data-separator-vertical="^--\n$">
+          data-separator-vertical="^--\n$"
+          data-attributes="--attr=(.*?)$" >
           <script type="text/template">
             ### Cassandra ###
             - Distributed
             - Scalable
-            - High availibility
+            - High availability
             - Database
 
             ----
@@ -55,12 +56,21 @@
 
             ----
 
-            ### scaling ###
+            ### Scaling ###
+              - availability
+              - read workload
+              - write workload
+
               - network storage
               - master-slave
               - sharding
               - masterless
 
+            ----
+            ### CAP ###
+            - Consistency
+            - Availability
+            - Partition Tolerance
             ----
 
             ### Data partition ###
@@ -115,6 +125,23 @@
             - LOCAL_SERIAL
             - EACH_QUORUM
             - ALL
+
+            --
+
+            <!-- --attr=data-background="white" -->
+            ### Write Request ###
+            <img src="images/arc_write-single_dc.png" width="420">
+
+            --
+
+            <!-- --attr=data-background="white" -->
+            <img src="images/arc_write-multiple_dc.svg" width="420">
+
+            ----
+
+            ### Multiple Datacenter ###
+            ![multi dc](images/multiple_datacenter.png)
+            
           </script>
         </section>
       </div>
