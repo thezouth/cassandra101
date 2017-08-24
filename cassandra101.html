@@ -56,27 +56,41 @@
             - Isolation <!-- .element: class="fragment" -->
             - Durability <!-- .element: class="fragment" -->
 
+            Note:
+            - Database Properties
+
             ----
 
             ### Scaling ###
-              - read workload
-              - write workload
+              - read workload <!-- .element: class="fragment" -->
+              - write workload <!-- .element: class="fragment" -->
 
             Note: 
-            - vertical
-            - horizontal
+            - why scale? (more usage, fault tolerance)
+            - scale type (vertical / horizontal)
 
             ----
 
             ### Master-Slave ###
             - Replication
 
+            Note:
+            - scale read
+            - write to master
+
             ----
 
             ### Sharding ###
             - Sharding key
-            - Hot shard!!!
-            - Scale???
+            - Hot shard!!! <!-- .element: class="fragment" -->
+            - Scale??? <!-- .element: class="fragment" -->
+
+            Note:
+            - scale write
+            - can mixed with master-slave
+            - Hot shard, Scale
+              - need to reshard
+
 
             ----
 
@@ -84,6 +98,9 @@
             - Consistency <!-- .element: class="fragment" -->
             - Availability <!-- .element: class="fragment" -->
             - Partition Tolerance <!-- .element: class="fragment" -->
+
+            Note:
+            - choose 2 from 3 !BUT! it is loosen one constraint
 
             --
 
@@ -118,6 +135,10 @@
             ----
 
             ### Multiple Datacenter ###
+            - Disaster recover
+            - Different workload
+              - Realtime
+              - Analytic
             
 
             --
