@@ -238,7 +238,7 @@
             - High availability <!-- .element: class="fragment" -->
             - Database <!-- .element: class="fragment" -->
 
-            ----
+            --
 
             ### Installation & Configuration ###
 
@@ -289,8 +289,7 @@
             $ bin/cassandra -Dcassandra.config=file:///`pwd`/conf/cassandra.yaml
             ```
 
-
-            ----
+            --
 
             ### Nodetool ###
             command line interface for managing cluster
@@ -318,7 +317,7 @@
 
             ### Write Path ###
 
-            <img src="images/write-process.png" width="700" style="background-color: white">
+            <img src="images/write-process.png" width="700">
 
             Note: 
             - logging data in commit log
@@ -336,7 +335,7 @@
             <!-- --attr=data-background="white" -->
             ### Read Path ###
 
-            <img src="images/caching-reads.png" width="700" style="background-color: white">
+            <img src="images/caching-reads.png" width="700">
 
             --
 
@@ -353,7 +352,7 @@
             <span style="color: yellow;">Partitioning concept</span> is embed in Primary Key
 
             <p>Hash(Tokenize(Parition Key)) = Node</p>
-            <img src="images/cassandra_token_wo_vnodes.png" width="300"></img>
+            <img src="images/cassandra_token_wo_vnodes.png" width="300">
 
             --
 
@@ -399,7 +398,7 @@
             Cassandra was born in "HDD" era
 
 
-            <img src="images/hdd.png" width="420"></img>
+            <img src="images/hdd.png" width="420">
 
             --
 
@@ -463,14 +462,15 @@
 
             --
 
+            <!-- --attr=data-background="white" -->
             ### Materialize view machnism ###
 
-            <img src="images/materialized-view-process.png"
-                 style="background: #fff;"
-                 width="700"></img>
+            <img src="images/materialized-view-process.png" width="700">
 
-            > <small>It's not gurantee write on materialized view,
-              but well design cause eventually consistency within eye blink.</small><!-- .element: class="fragment" -->
+            <div>
+              > <small>It's not guarantee write on materialized view,
+              but well design cause eventually consistency within eye blink.</small>
+            </div><!-- .element: class="fragment" -->
 
             ----
 
@@ -488,7 +488,7 @@
             <span style="color: yellow;">Spark is a choice</span><!-- .element: class="fragment" -->
 
             <div>
-              <img src="images/spark-cassandra.png" width="300"></img>
+              <img src="images/spark-cassandra.png" width="300">
               <p class="footnote">https://www.slideshare.net/patrickmcfadin/apache-cassandra-apache-spark-for-time-series-data</p>
             </div><!-- .element: class="fragment" -->
 
@@ -499,23 +499,25 @@
             <span style="color: yellow;">Place Spark on Cassandra nodes</span><!-- .element: class="fragment" -->
 
             <div>
-              <img src="images/spark-cassandra-workload-isolation.jpg"></img>
+              <img src="images/spark-cassandra-workload-isolation.jpg">
               <p class="footnote">https://openbigdata.wordpress.com/tag/cassandra/</p>
             </div><!-- .element: class="fragment" -->
 
             ----
 
+            <!-- --attr=data-background="white" -->
             ### Cassandra Design Process ###
 
 
-            <img src="images/cassandra-modeling-process.png"></img>
+            <img src="images/cassandra-modeling-process.png">
             <p class="footnote"> A. Chebotko, A. Kashlev, S. Lu; A Big Data modeling Methodology for Apache Cassandra</p>
 
             --
 
+            <!-- --attr=data-background="white" -->
             Chebotko Model
 
-            <img src="images/chebotko-model.png" width="400"></img>
+            <img src="images/chebotko-model.png" width="400">
             <p class="footnote"> A. Chebotko, A. Kashlev, S. Lu; A Big Data modeling Methodology for Apache Cassandra</p>
 
             ----
@@ -537,7 +539,7 @@
 
             ### Tombstone ###
 
-            <img src="images/tombstone.jpg" width="500"></img>
+            <img src="images/tombstone.jpg" width="500">
 
             --
 
@@ -561,24 +563,35 @@
 
             ----
 
+            <!-- --attr=data-background="white" -->
             SSTable is immutable
 
-
-            <img src="images/write-process.png" style="background: #fff;"></img>
+            <img src="images/write-process.png" width="700">
 
 
             <small>No update-in-place is done</small>
 
             --
 
+            <!-- --attr=data-background="white" -->
             Compaction
 
-            <img src="images/compaction-size-tried.png"></img>
+            <img src="images/compaction-size-tried.png" width="700">
 
 
             --
 
             Phantom Record
+
+
+            ----
+
+            # End #
+
+
+            ----
+
+            ----
 
             ----
 
