@@ -1,0 +1,199 @@
+movie_title,genre_list,duration
+Avatar ,"<Action,Adventure,Fantasy,Sci-Fi>",178.0
+Pirates of the Caribbean: At World's End ,"<Action,Adventure,Fantasy>",169.0
+Spectre ,"<Action,Adventure,Thriller>",148.0
+The Dark Knight Rises ,"<Action,Thriller>",164.0
+John Carter ,"<Action,Adventure,Sci-Fi>",132.0
+Spider-Man 3 ,"<Action,Adventure,Romance>",156.0
+Tangled ,"<Adventure,Animation,Comedy,Family,Fantasy,Musical,Romance>",100.0
+Avengers: Age of Ultron ,"<Action,Adventure,Sci-Fi>",141.0
+Harry Potter and the Half-Blood Prince ,"<Adventure,Family,Fantasy,Mystery>",153.0
+Batman v Superman: Dawn of Justice ,"<Action,Adventure,Sci-Fi>",183.0
+Superman Returns ,"<Action,Adventure,Sci-Fi>",169.0
+Quantum of Solace ,"<Action,Adventure>",106.0
+Pirates of the Caribbean: Dead Man's Chest ,"<Action,Adventure,Fantasy>",151.0
+The Lone Ranger ,"<Action,Adventure,Western>",150.0
+Man of Steel ,"<Action,Adventure,Fantasy,Sci-Fi>",143.0
+The Chronicles of Narnia: Prince Caspian ,"<Action,Adventure,Family,Fantasy>",150.0
+The Avengers ,"<Action,Adventure,Sci-Fi>",173.0
+Pirates of the Caribbean: On Stranger Tides ,"<Action,Adventure,Fantasy>",136.0
+Men in Black 3 ,"<Action,Adventure,Comedy,Family,Fantasy,Sci-Fi>",106.0
+The Hobbit: The Battle of the Five Armies ,"<Adventure,Fantasy>",164.0
+The Amazing Spider-Man ,"<Action,Adventure,Fantasy>",153.0
+Robin Hood ,"<Action,Adventure,Drama,History>",156.0
+The Hobbit: The Desolation of Smaug ,"<Adventure,Fantasy>",186.0
+The Golden Compass ,"<Adventure,Family,Fantasy>",113.0
+King Kong ,"<Action,Adventure,Drama,Romance>",201.0
+Titanic ,"<Drama,Romance>",194.0
+Captain America: Civil War ,"<Action,Adventure,Sci-Fi>",147.0
+Battleship ,"<Action,Adventure,Sci-Fi,Thriller>",131.0
+Jurassic World ,"<Action,Adventure,Sci-Fi,Thriller>",124.0
+Skyfall ,"<Action,Adventure,Thriller>",143.0
+Spider-Man 2 ,"<Action,Adventure,Fantasy,Romance>",135.0
+Iron Man 3 ,"<Action,Adventure,Sci-Fi>",195.0
+Alice in Wonderland ,"<Adventure,Family,Fantasy>",108.0
+X-Men: The Last Stand ,"<Action,Adventure,Fantasy,Sci-Fi,Thriller>",104.0
+Monsters University ,"<Adventure,Animation,Comedy,Family,Fantasy>",104.0
+Transformers: Revenge of the Fallen ,"<Action,Adventure,Sci-Fi>",150.0
+Transformers: Age of Extinction ,"<Action,Adventure,Sci-Fi>",165.0
+Oz the Great and Powerful ,"<Adventure,Family,Fantasy>",130.0
+The Amazing Spider-Man 2 ,"<Action,Adventure,Fantasy,Sci-Fi>",142.0
+TRON: Legacy ,"<Action,Adventure,Sci-Fi>",125.0
+Cars 2 ,"<Adventure,Animation,Comedy,Family,Sport>",106.0
+Green Lantern ,"<Action,Adventure,Sci-Fi>",123.0
+Toy Story 3 ,"<Adventure,Animation,Comedy,Family,Fantasy>",103.0
+Terminator Salvation ,"<Action,Adventure,Sci-Fi>",118.0
+Furious 7 ,"<Action,Crime,Thriller>",140.0
+World War Z ,"<Action,Adventure,Horror,Sci-Fi,Thriller>",123.0
+X-Men: Days of Future Past ,"<Action,Adventure,Fantasy,Sci-Fi,Thriller>",149.0
+Star Trek Into Darkness ,"<Action,Adventure,Sci-Fi>",132.0
+Jack the Giant Slayer ,"<Adventure,Fantasy>",114.0
+The Great Gatsby ,"<Drama,Romance>",143.0
+Prince of Persia: The Sands of Time ,"<Action,Adventure,Fantasy,Romance>",116.0
+Pacific Rim ,"<Action,Adventure,Sci-Fi>",131.0
+Transformers: Dark of the Moon ,"<Action,Adventure,Sci-Fi>",154.0
+Indiana Jones and the Kingdom of the Crystal Skull ,"<Action,Adventure,Fantasy>",122.0
+The Good Dinosaur ,"<Adventure,Animation,Comedy,Family,Fantasy>",93.0
+Brave ,"<Adventure,Animation,Comedy,Family,Fantasy>",93.0
+Star Trek Beyond ,"<Action,Adventure,Sci-Fi,Thriller>",122.0
+WALL·E ,"<Adventure,Animation,Family,Sci-Fi>",98.0
+Rush Hour 3 ,"<Action,Comedy,Crime,Thriller>",91.0
+2012 ,"<Action,Adventure,Sci-Fi>",158.0
+A Christmas Carol ,"<Animation,Drama,Family,Fantasy>",96.0
+Jupiter Ascending ,"<Action,Adventure,Sci-Fi>",127.0
+The Legend of Tarzan ,"<Action,Adventure,Drama,Romance>",110.0
+"The Chronicles of Narnia: The Lion, the Witch and the Wardrobe ","<Adventure,Family,Fantasy>",150.0
+X-Men: Apocalypse ,"<Action,Adventure,Sci-Fi>",144.0
+The Dark Knight ,"<Action,Crime,Drama,Thriller>",152.0
+Up ,"<Adventure,Animation,Comedy,Family>",96.0
+Monsters vs. Aliens ,"<Action,Adventure,Animation,Comedy,Family,Sci-Fi>",94.0
+Iron Man ,"<Action,Adventure,Sci-Fi>",126.0
+Hugo ,"<Adventure,Drama,Family,Mystery>",126.0
+Wild Wild West ,"<Action,Comedy,Sci-Fi,Western>",106.0
+The Mummy: Tomb of the Dragon Emperor ,"<Action,Adventure,Fantasy,Horror,Thriller>",112.0
+Suicide Squad ,"<Action,Adventure,Comedy,Sci-Fi>",123.0
+Evan Almighty ,"<Comedy,Family,Fantasy>",96.0
+Edge of Tomorrow ,"<Action,Adventure,Sci-Fi>",113.0
+Waterworld ,"<Action,Adventure,Sci-Fi,Thriller>",176.0
+G.I. Joe: The Rise of Cobra ,"<Action,Adventure,Sci-Fi,Thriller>",118.0
+Inside Out ,"<Adventure,Animation,Comedy,Drama,Family,Fantasy>",95.0
+The Jungle Book ,"<Adventure,Drama,Family,Fantasy>",106.0
+Iron Man 2 ,"<Action,Adventure,Sci-Fi>",124.0
+Snow White and the Huntsman ,"<Action,Adventure,Drama,Fantasy>",132.0
+Maleficent ,"<Action,Adventure,Family,Fantasy,Romance>",97.0
+Dawn of the Planet of the Apes ,"<Action,Adventure,Drama,Sci-Fi>",130.0
+The Lovers ,"<Action,Adventure,Romance,Sci-Fi>",109.0
+47 Ronin ,"<Action,Adventure,Drama,Fantasy>",128.0
+Captain America: The Winter Soldier ,"<Action,Adventure,Sci-Fi>",136.0
+Shrek Forever After ,"<Adventure,Animation,Comedy,Family,Fantasy>",93.0
+Tomorrowland ,"<Action,Adventure,Family,Mystery,Sci-Fi>",130.0
+Big Hero 6 ,"<Action,Adventure,Animation,Comedy,Drama,Family,Sci-Fi>",102.0
+Wreck-It Ralph ,"<Adventure,Animation,Comedy,Family,Sci-Fi>",101.0
+The Polar Express ,"<Adventure,Animation,Family,Fantasy>",100.0
+Independence Day: Resurgence ,"<Action,Adventure,Sci-Fi>",120.0
+How to Train Your Dragon ,"<Adventure,Animation,Family,Fantasy>",98.0
+Terminator 3: Rise of the Machines ,"<Action,Sci-Fi>",109.0
+Guardians of the Galaxy ,"<Action,Adventure,Sci-Fi>",121.0
+Interstellar ,"<Adventure,Drama,Sci-Fi>",169.0
+Inception ,"<Action,Adventure,Sci-Fi,Thriller>",148.0
+Godzilla Resurgence ,"<Action,Adventure,Drama,Horror,Sci-Fi>",120.0
+The Hobbit: An Unexpected Journey ,"<Adventure,Fantasy>",182.0
+The Fast and the Furious ,"<Action,Crime,Thriller>",106.0
+The Curious Case of Benjamin Button ,"<Drama,Fantasy,Romance>",166.0
+X-Men: First Class ,"<Action,Adventure,Sci-Fi>",132.0
+The Hunger Games: Mockingjay - Part 2 ,"<Adventure,Sci-Fi>",137.0
+The Sorcerer's Apprentice ,"<Action,Adventure,Family,Fantasy>",109.0
+Poseidon ,"<Action,Adventure,Drama,Thriller>",98.0
+Alice Through the Looking Glass ,"<Adventure,Family,Fantasy>",113.0
+Shrek the Third ,"<Adventure,Animation,Comedy,Family,Fantasy>",93.0
+Warcraft ,"<Action,Adventure,Fantasy>",123.0
+Terminator Genisys ,"<Action,Adventure,Sci-Fi>",126.0
+The Chronicles of Narnia: The Voyage of the Dawn Treader ,"<Adventure,Family,Fantasy>",113.0
+Pearl Harbor ,"<Action,Drama,History,Romance,War>",184.0
+Transformers ,"<Action,Adventure,Sci-Fi>",144.0
+Alexander ,"<Action,Adventure,Biography,Drama,History,Romance,War>",206.0
+Harry Potter and the Order of the Phoenix ,"<Adventure,Family,Fantasy,Mystery>",138.0
+Harry Potter and the Goblet of Fire ,"<Adventure,Family,Fantasy,Mystery>",157.0
+Hancock ,"<Action,Drama>",102.0
+I Am Legend ,"<Drama,Horror,Sci-Fi>",104.0
+Charlie and the Chocolate Factory ,"<Adventure,Comedy,Family,Fantasy>",115.0
+Ratatouille ,"<Animation,Comedy,Family,Fantasy>",111.0
+Batman Begins ,"<Action,Adventure>",128.0
+Madagascar: Escape 2 Africa ,"<Action,Adventure,Animation,Comedy,Family>",89.0
+Night at the Museum: Battle of the Smithsonian ,"<Adventure,Comedy,Family,Fantasy>",105.0
+X-Men Origins: Wolverine ,"<Action,Adventure,Fantasy,Sci-Fi,Thriller>",119.0
+The Matrix Revolutions ,"<Action,Sci-Fi>",129.0
+Frozen ,"<Adventure,Animation,Comedy,Family,Fantasy,Musical>",102.0
+The Matrix Reloaded ,"<Action,Sci-Fi>",138.0
+Thor: The Dark World ,"<Action,Adventure,Fantasy>",112.0
+Mad Max: Fury Road ,"<Action,Adventure,Sci-Fi,Thriller>",120.0
+Angels & Demons ,"<Mystery,Thriller>",146.0
+Thor ,"<Action,Adventure,Fantasy>",115.0
+Bolt ,"<Adventure,Animation,Comedy,Drama,Family>",96.0
+G-Force ,"<Action,Adventure,Animation,Comedy,Family,Fantasy,Sci-Fi>",88.0
+Wrath of the Titans ,"<Action,Adventure,Fantasy>",99.0
+Dark Shadows ,"<Comedy,Fantasy,Horror>",113.0
+Mission: Impossible - Rogue Nation ,"<Action,Adventure,Thriller>",131.0
+The Wolfman ,"<Drama,Fantasy,Horror,Thriller>",119.0
+The Legend of Tarzan ,"<Action,Adventure,Drama,Romance>",110.0
+Bee Movie ,"<Adventure,Animation,Comedy,Family>",91.0
+Kung Fu Panda 2 ,"<Action,Adventure,Animation,Comedy,Family>",90.0
+The Last Airbender ,"<Action,Adventure,Family,Fantasy>",103.0
+Mission: Impossible III ,"<Action,Adventure,Thriller>",124.0
+White House Down ,"<Action,Drama,Thriller>",131.0
+Mars Needs Moms ,"<Action,Adventure,Animation,Comedy,Family,Sci-Fi>",88.0
+Flushed Away ,"<Adventure,Animation,Comedy,Family>",85.0
+Pan ,"<Adventure,Family,Fantasy>",111.0
+Mr. Peabody & Sherman ,"<Adventure,Animation,Comedy,Family,Sci-Fi>",92.0
+Troy ,<Adventure>,196.0
+Madagascar 3: Europe's Most Wanted ,"<Adventure,Animation,Comedy,Family>",93.0
+Die Another Day ,"<Action,Adventure,Thriller>",133.0
+Ghostbusters ,"<Action,Comedy,Fantasy,Sci-Fi>",116.0
+Armageddon ,"<Action,Adventure,Sci-Fi,Thriller>",153.0
+Men in Black II ,"<Action,Adventure,Comedy,Family,Fantasy,Mystery,Sci-Fi>",88.0
+Beowulf ,"<Action,Adventure,Animation,Fantasy>",115.0
+Kung Fu Panda 3 ,"<Action,Adventure,Animation,Comedy,Family>",95.0
+Mission: Impossible - Ghost Protocol ,"<Action,Adventure,Thriller>",133.0
+Rise of the Guardians ,"<Adventure,Animation,Family,Fantasy>",97.0
+Fun with Dick and Jane ,"<Comedy,Crime>",90.0
+The Last Samurai ,"<Action,Drama,History,War>",154.0
+Exodus: Gods and Kings ,"<Action,Adventure,Drama>",150.0
+Star Trek ,"<Action,Adventure,Sci-Fi>",127.0
+Spider-Man ,"<Action,Adventure,Fantasy,Romance>",121.0
+How to Train Your Dragon 2 ,"<Action,Adventure,Animation,Comedy,Family,Fantasy>",102.0
+Gods of Egypt ,"<Action,Adventure,Fantasy>",126.0
+Stealth ,"<Action,Adventure,Sci-Fi,Thriller>",121.0
+Watchmen ,"<Action,Drama,Mystery,Sci-Fi>",215.0
+Lethal Weapon 4 ,"<Action,Crime,Thriller>",127.0
+Hulk ,"<Action,Sci-Fi>",138.0
+G.I. Joe: Retaliation ,"<Action,Adventure,Sci-Fi,Thriller>",122.0
+Sahara ,"<Action,Adventure,Comedy,Thriller>",124.0
+Final Fantasy: The Spirits Within ,"<Action,Adventure,Animation,Fantasy,Romance,Sci-Fi>",106.0
+Captain America: The First Avenger ,"<Action,Adventure,Sci-Fi>",124.0
+The World Is Not Enough ,"<Action,Adventure,Thriller>",128.0
+Master and Commander: The Far Side of the World ,"<Action,Adventure,Drama,History,War>",138.0
+The Twilight Saga: Breaking Dawn - Part 2 ,"<Adventure,Drama,Fantasy,Romance>",115.0
+Happy Feet 2 ,"<Animation,Comedy,Family,Musical>",100.0
+The Incredible Hulk ,"<Action,Adventure,Sci-Fi>",135.0
+Miami Vice             ,"<Action,Crime,Drama,Mystery,Thriller>",60.0
+The BFG ,"<Adventure,Family,Fantasy>",117.0
+The Revenant ,"<Adventure,Drama,Thriller,Western>",156.0
+Turbo ,"<Adventure,Animation,Comedy,Family,Sport>",96.0
+Rango ,"<Adventure,Animation,Comedy,Family,Western>",107.0
+Penguins of Madagascar ,"<Adventure,Animation,Comedy,Family>",92.0
+The Bourne Ultimatum ,"<Action,Mystery,Thriller>",115.0
+Kung Fu Panda ,"<Action,Adventure,Animation,Comedy,Family>",92.0
+Ant-Man ,"<Action,Adventure,Comedy,Sci-Fi>",117.0
+The Hunger Games: Catching Fire ,"<Adventure,Sci-Fi,Thriller>",146.0
+The Twilight Saga: Breaking Dawn - Part 2 ,"<Adventure,Drama,Fantasy,Romance>",115.0
+Home ,"<Adventure,Animation,Comedy,Family,Fantasy,Sci-Fi>",94.0
+War of the Worlds ,"<Adventure,Sci-Fi,Thriller>",116.0
+Bad Boys II ,"<Action,Comedy,Crime,Thriller>",147.0
+Puss in Boots ,"<Action,Adventure,Animation,Comedy,Family,Fantasy>",90.0
+Salt ,"<Action,Crime,Mystery,Thriller>",101.0
+Noah ,"<Action,Adventure,Drama>",138.0
+The Adventures of Tintin ,"<Action,Adventure,Family,Mystery>",107.0
+Harry Potter and the Prisoner of Azkaban ,"<Adventure,Family,Fantasy,Mystery>",142.0
+Australia ,"<Adventure,Drama,Romance,War>",165.0
+After Earth ,"<Action,Adventure,Sci-Fi>",100.0
+Dinosaur ,"<Adventure,Animation,Family,Thriller>",82.0
