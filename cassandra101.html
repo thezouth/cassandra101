@@ -32,9 +32,11 @@
   <body>
     <div class="reveal">
       <div class="slides">
+
         <section>
           <img width="420" src="images/cassandra_logo.png">
         </section>
+
         <section data-markdown
           data-separator="^----\n$"
           data-separator-vertical="^--\n$"
@@ -45,19 +47,19 @@
 
             --
 
-            - Understanding the good and bad points between Cassandra and other database <!-- .element: class="fragment" -->
+            - To understand the advantages and disadvantages between Cassandra and other database
 
             - Become beginner's mind to start to develop an application with Cassandra <!-- .element: class="fragment" -->
 
-              *After the course, you still have many things to study further* <!-- .element: class="fragment" -->
+              *After the course, you still have to study further* <!-- .element: class="fragment" -->
 
             --
 
             ### What's not covered ###
 
-            - Operation Management: *monitoring, customize configuration and etc.*
+            - <p>Operation Management - *monitoring, customize configuration and etc.*</p> <!-- .element: class="fragment" -->
 
-            - Multiple Datacenter: *multple geolocated datacenter, in the same cluster*
+            - <p>Multiple Datacenter - *multple geolocated datacenter, in the same cluster*</p> <!-- .element: class="fragment" -->
 
             ----
 
@@ -65,13 +67,13 @@
 
             --
 
-            - Familiar with RDBMS <!-- .element: class="fragment" -->
+            Familiar with RDBMS
 
               *CQL is similar to SQL, but not all*  <!-- .element: class="fragment" -->
 
             --
 
-            - Basic programming in Python <!-- .element: class="fragment" -->
+            Basic programming in Python
 
               *Define variables, functions* <!-- .element: class="fragment" -->
 
@@ -79,16 +81,128 @@
 
             --
 
-            - Basic skill in Unix environment <!-- .element: class="fragment" -->
+            Basic skill in Unix environment
 
               *Use SSH to connect remote host* <!-- .element: class="fragment" -->
 
               *Manage with files on Linux server* <!-- .element: class="fragment" -->
 
-            ----
+          </script>
+        </section>
+
+        <section data-markdown
+          data-separator="^----\n$"
+          data-separator-vertical="^--\n$"
+          data-separator-notes="^Note:"
+          data-attributes="--attr=(.*?)$">
+          <script type="text/template">
+            ### Little bits of database scaling ###
+
+            --
+
+            Once upon a time, we have a *Single* database
+
+            --
+
+            With popularity, now it's a *Rock Star* !!
+
+            --
+
+            Upsizing - the blue pill?
+
+            <!-- Image: upsizing database machine -->
+
+            --
+
+            Easiest to start, but harder to go on
+              - Hardware <!-- .element: class="fragment" -->
+              <!-- Image: cost of vertifcally scale graph -->
+              - Software <!-- .element: class="fragment" -->
+              <!-- Image: Llicense cose of vertically scale -->
+
+            --
+
+            Are you DEFEATED with it?
+
+            Or, you will DIVIDE it. <!-- .element: class="fragment" -->
+
+            --
+
+            ### Read Contention ###
+
+            --
+
+            ### Replication ###
+
+            --
+
+            We have many replicas, how can we update?
+
+            --
+
+            ### Master-slave ###
+
+            Read from multiple replicas. <!-- .element: class="fragment" -->
+
+            Write into one replica (leader) <!-- .element: class="fragment" -->
+
+
+            --
+
+            ### Write Contention ###
+
+            --
+
+            ### Multiple master-slave ###
+
+            --
+
+            ### Sharding ###
+
+            --
+
+            ### Shard Key & Function ###
+
+            --
+
+            ### Where to apply sharding ###
+
+            - Application - data acces library  <!-- .element: class="fragment" -->
+
+            - Middleware - manage data via it <!-- .element: class="fragment" -->
+
+            --
+
+            ### One problem resolved <br/> New problem borns ###
+
+            --
+
+            ### Hot Shard ###
+
+            * <p>In Design: (Know data)<br/>
+              *Good* shard key & function prevent it.</p>
+
+            * <p>In Operation: (Know current data)<br/>
+              *Better* shard key & function resolve it.</p>
+
+            --
+
+            ### Resharding ###
+
+            * <p>Sharding key or function changes</p>
+            * <p>Scaling up/down database cluster</p>
+
+            --
+
+            ### Single Point Of Failure ###
+
+            * Different function responsibility in database cluster.
+
+            * Service available unless no component left in a function.
 
           </script>
         </section>
+
         <section data-markdown
           data-separator="^----\n$"
           data-separator-vertical="^--\n$"
