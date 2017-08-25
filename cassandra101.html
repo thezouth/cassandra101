@@ -264,7 +264,7 @@
             <img src="images/arc_read-single_dc.svg" width="420">
             
             ----
-            
+
             ### Data Modeling ###
             
             ----
@@ -274,8 +274,12 @@
             
             <p>Node = Hash(Tokenize(Parition Key))</p>
             <img src="images/cassandra_token_wo_vnodes.png" width="300"></img>
+            
+            --
 
-            > <small>Optimize Read? Read one node at a time</small> <!-- .element: class="fragment" -->
+            > Optimize Read?
+            
+            Read one node at a time <!-- .element: class="fragment" -->
 
             --
 
@@ -287,6 +291,8 @@
             ----
 
             ### Cassandra is <span style="color: yellow;">Wide-Column Family</span> ###
+
+            --
             
             > <small>CREATE TABLE web_log (user_id, access_time, path, server <br/>
               PRIMARY KEY((user_id), access_time));
@@ -300,7 +306,10 @@
               | | path = "..." | path = "..." |
               | | server = "..." | server = "..." |
 
-            > You can query clustering key as range <!-- .element: class="fragment" -->
+            --
+
+            > You can query clustering key as range
+            
             --
 
             ### Cassandra was born in "HDD" era ###
@@ -311,21 +320,35 @@
             --
             
             ### Know your data ##
-            - How you read the data? <!-- .element: class="fragment" -->
+            
+            - Read as structed. <!-- .element: class="fragment" -->
+            
             - Wide partition cause bigger range to search <!-- .element: class="fragment" -->
+            
             - Primary Key is not only identity of data, it's how data is arranged. <!-- .element: class="fragment" -->
 
             ----
 
-            ### Lightweight Transactions (Compare-and-set) ###
+            ### Lightweight Transactions ###
+
+            Compare-and-set
 
             ----
 
+            ### Materialize View ###
+
+            Indexed view
             
-            ### Materialize View Rule ###
+            It's just another table.
+
+            --
+
             
-            - PK(base table) ⊆ PK(materialized view)
-            - PK(materialized table) - PK(base table) <= 1
+            ### Rule ###
+            
+            PK(base table) ⊆ PK(materialized view)
+            
+            n(PK(materialized table) - PK(base table)) <= 1
             
             --
 
@@ -337,6 +360,38 @@
 
             > <small>It's not gurantee write on materialized view, 
               but well design clause eventually consistency within eye blink.</small>
+
+            ----
+
+            ### Whole table processing ###
+            
+            --
+
+            Data size fit to memory
+            <span style="color: yellow;">any lib works</span> <!-- .element: class="fragment" -->
+
+            --
+
+            Data size is more than memory of my computer,
+            
+            <span style="color: yellow;">Spark is a choice</span><!-- .element: class="fragment" -->
+            
+            <img src="images/spark-cassandra.png" width="300"></img><!-- .element: class="fragment" -->
+
+            --
+
+            Data too large to transfer
+            
+            <span style="color: yellow;">Place Spark on Cassandra nodes</span><!-- .element: class="fragment" -->
+
+            <img src="images/spark-cassandra-workload-isolation.jpg"></img><!-- .element: class="fragment" -->
+            <p class="footnote">https://openbigdata.wordpress.com/tag/cassandra/</p>
+
+            ----
+
+            ### Cassandra Design Process ###
+
+            
 
             ----
 
