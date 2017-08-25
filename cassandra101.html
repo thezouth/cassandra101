@@ -27,14 +27,33 @@
         border:none;
         box-shadow:none;
       }
+      .slides .footnote{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 30%;
+        text-align: center;
+      }
+      .slides .footer{
+        bottom: 0;
+        left: 1000px;
+        right: 0;
+      }
     </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-
-        <section>
-          <img width="420" src="images/cassandra_logo.png">
+        <section data-background="#90bd50">
+          <img style="padding-top:200px;" width="600" src="images/cassandra_logo.png">
+          <div style="padding-top:100px;">
+            <span>
+              <img width="60" src="images/webscal3r_logo.png">
+              <img width="300" src="images/sprint3r-cover.png">
+              <img width="60" src="images/zouth_logo.png">
+            </span>
+          </div>
         </section>
 
         <section data-markdown
@@ -286,7 +305,11 @@
             ----
 
             ### Cassandra ###
-            <img src="images/cassandra_troy.png" width="420"> <!-- .element: class="fragment" -->
+
+            <div>
+              <img src="images/cassandra_troy.png" width="420">
+              <p class="footnote">Cassandra by Evelyn De Morgan (1898, London); Cassandra in front of the burning city of Troy at the peak of her insanity.</p>
+            </div> <!-- .element: class="fragment" -->
 
             ----
 
@@ -325,7 +348,31 @@
             ```
 
 
+            Note:
+              - separate commitlog and datalog dir for performance (on HDD)
+              - use difference interface between serving client  and cassandra internal usage
 
+            ----
+
+            ### Nodetool ###
+            command line interface for managing cluster
+
+            ```
+            $ nodetool [options] command [args]
+            ```
+
+            ```
+            $ nodetool status mykeyspace
+
+            Datacenter: datacenter1
+            =======================
+            Status=Up/Down
+            |/ State=Normal/Leaving/Joining/Moving
+            --  Address    Load       Tokens  Owns    Host ID                               Rack
+            UN  127.0.0.1  47.66 KB   1       33.3%   aaa1b7c1-6049-4a08-ad3e-3697a0e30e10  rack1
+            UN  127.0.0.2  47.67 KB   1       33.3%   1848c369-4306-4874-afdf-5c1e95b8732e  rack1
+            UN  127.0.0.3  47.67 KB   1       33.3%   49578bf1-728f-438d-b1c1-d8dd644b6f7f  rack1
+            ```
 
             ----
 
@@ -338,22 +385,238 @@
 
             <img src="images/write-process.png" width="420" style="background-color: white">
 
+            --
+
+            <!-- --attr=data-background="white" -->
+            <img src="images/arc_write-single_dc.png" width="420">
+
             ----
 
             ### Read Path ###
 
             <img src="images/caching-reads.png" width="420" style="background-color: white">
 
+            --
+
+            <!-- --attr=data-background="white" -->
+            <img src="images/arc_read-single_dc.svg" width="420">
+
             ----
 
+            ### Data Modeling ###
 
+            ----
+
+            ### Primary Key ###
+            <span style="color: yellow;">Partitioning concept</span> is embed in Primary Key
+
+            <p>Hash(Tokenize(Parition Key)) = Node</p>
+            <img src="images/cassandra_token_wo_vnodes.png" width="300"></img>
+
+            --
+
+            > Optimize Read?
+
+            Read one node at a time <!-- .element: class="fragment" -->
+
+            --
+
+            ### Know your data 'n hardware ###
+            - Max(Node) = Cardinality(Partition Key) <!-- .element: class="fragment" -->
+            - How balance of data in each partition? <!-- .element: class="fragment" -->
+            - Read / Write behaviour. <!-- .element: class="fragment" -->
+
+            ----
+
+            Cassandra is <span style="color: yellow;">Wide-Column</span> Store
+
+            --
+
+            > <small>CREATE TABLE web_log (user_id, access_time, path, server <br/>
+              PRIMARY KEY((user_id), access_time));
+
+
+              | user_id = 0 | access_time = t1 | access_time = t2 | access_time = t3 |
+              | ------------- |-------------|-------------|-----|
+              | | path = "..." | path = "..." | path = "..." |
+              | | server = "..." | server = "..." | server = "..." |
+              | user_id = 1 | access_time = t2 | access_time = t3
+              | | path = "..." | path = "..." |
+              | | server = "..." | server = "..." |
+
+            --
+
+            > You can query clustering key as range
+
+            --
+
+            Cassandra was born in "HDD" era
+
+
+            <img src="images/hdd.png" width="420"></img>
+
+            --
+
+            ### Know your data ##
+
+            - Read as structed. <!-- .element: class="fragment" -->
+
+            - Wide partition cause bigger range to search <!-- .element: class="fragment" -->
+
+            - Primary Key is not only identity of data, it's how data is arranged. <!-- .element: class="fragment" -->
+
+            ----
+
+            ### Lightweight Transactions ###
+
+            Compare-and-set
+
+            --
+
+            INSERT ... IF NOT EXIST
+
+            --
+
+            UPDATE ... IF xxx = "value"
+
+            --
+
+            DELETE ... IF xxx = "value"
+
+            ----
+
+            ### Materialize View ###
+
+            Indexed view
+
+            It's just another table.
+
+            --
+
+
+            ### Rule ###
+
+            PK(base table) ⊆ PK(materialized view)
+
+            n(PK(materialized table) - PK(base table)) <= 1
+
+            --
+
+            ### Materialize view machnism ###
+
+            <img src="images/materialized-view-process.png"
+                 style="background: #fff;"
+                 width="700"></img>
+
+            > <small>It's not gurantee write on materialized view,
+              but well design cause eventually consistency within eye blink.</small><!-- .element: class="fragment" -->
+
+            ----
+
+            ### Whole table processing ###
+
+            --
+
+            Data size fit to memory
+            <span style="color: yellow;">any lib works</span> <!-- .element: class="fragment" -->
+
+            --
+
+            Data size is more than memory of my computer,
+
+            <span style="color: yellow;">Spark is a choice</span><!-- .element: class="fragment" -->
+
+            <div>
+              <img src="images/spark-cassandra.png" width="300"></img>
+              <p class="footnote">https://www.slideshare.net/patrickmcfadin/apache-cassandra-apache-spark-for-time-series-data</p>
+            </div><!-- .element: class="fragment" -->
+
+            --
+
+            Data too large to transfer
+
+            <span style="color: yellow;">Place Spark on Cassandra nodes</span><!-- .element: class="fragment" -->
+
+            <div>
+              <img src="images/spark-cassandra-workload-isolation.jpg"></img>
+              <p class="footnote">https://openbigdata.wordpress.com/tag/cassandra/</p>
+            </div><!-- .element: class="fragment" -->
+
+            ----
+
+            ### Cassandra Design Process ###
+
+
+            <img src="images/cassandra-modeling-process.png"></img>
+            <p class="footnote"> A. Chebotko, A. Kashlev, S. Lu; A Big Data modeling Methodology for Apache Cassandra</p>
+
+            --
+
+            Chebotko Model
+
+            <img src="images/chebotko-model.png" width="400"></img>
+            <p class="footnote"> A. Chebotko, A. Kashlev, S. Lu; A Big Data modeling Methodology for Apache Cassandra</p>
+
+            ----
+
+            Last write win!
+
+            > No Data = never write ? <!-- .element: class="fragment" -->
+
+            --
+
+            ### Tombstone ###
+
+            <img src="images/tombstone.jpg" width="500"></img>
+
+            --
+
+            Die, but not disappear
+
+            <p style="text-align: left; font-size: 20px; padding-left: 320px;">
+              <span style="color: grey">record01 [deleted] </span><br />
+              <span style="color: grey">record02 [deleted] </span><br />
+              <span style="color: grey">record03 [deleted] </span><br />
+              <span style="color: grey">record04 [deleted] </span><br />
+              <span style="color: grey">record05 [deleted] </span><br />
+              <span style="color: grey">record06 [deleted] </span><br />
+              <span style="color: grey">record07 [deleted] </span><br />
+              <span style="color: grey">record08 [deleted] </span><br />
+              <span style="color: grey">record09 [deleted] </span><br />
+              <span style="color: grey">record10 [deleted] </span><br />
+              record11  <br />
+              record12  <br />
+              record13  <br />
+            </p>
+
+            ----
+
+            SSTable is immutable
+
+
+            <img src="images/write-process.png" style="background: #fff;"></img>
+
+
+            <small>No update-in-place is done</small>
+
+            --
+
+            Compaction
+
+            <img src="images/compaction-size-tried.png"></img>
+
+
+            --
+
+            Phantom Record
+
+            ----
 
             ### Multiple Datacenter ###
             - Disaster recover
             - Different workload
               - Realtime
               - Analytic
-
 
             --
 
@@ -422,17 +685,14 @@
       // - https://github.com/hakimel/reveal.js#configuration
       // - https://github.com/hakimel/reveal.js#dependencies
       Reveal.initialize({
+        slideNumber: 'c/t',
+        history: true,
         dependencies: [
           { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/marked.js' },
           { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/markdown.js' },
           { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js', async: true },
           { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
-      });
-
-      Reveal.configure({
-        slideNumber: 'c/t',
-        history: true
       });
     </script>
   </body>
