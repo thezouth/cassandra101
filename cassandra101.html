@@ -270,9 +270,9 @@
             ----
 
             ### Primary Key ###
-            <span style="color: yellow;">Partition concept</span> is embed in Primary Key
+            <span style="color: yellow;">Partitioning concept</span> is embed in Primary Key
             
-            <p>Node = Hash(Tokenize(Parition Key))</p>
+            <p>Hash(Tokenize(Parition Key)) = Node</p>
             <img src="images/cassandra_token_wo_vnodes.png" width="300"></img>
             
             --
@@ -290,7 +290,7 @@
             
             ----
 
-            ### Cassandra is <span style="color: yellow;">Wide-Column Family</span> ###
+            Cassandra is <span style="color: yellow;">Wide-Column</span> Store
 
             --
             
@@ -312,7 +312,7 @@
             
             --
 
-            ### Cassandra was born in "HDD" era ###
+            Cassandra was born in "HDD" era
             
 
             <img src="images/hdd.png" width="420"></img>
@@ -332,6 +332,18 @@
             ### Lightweight Transactions ###
 
             Compare-and-set
+
+            --
+
+            INSERT ... IF NOT EXIST
+
+            --
+
+            UPDATE ... IF xxx = "value"
+
+            --
+
+            DELETE ... IF xxx = "value"
 
             ----
 
@@ -359,7 +371,7 @@
                  width="700"></img>
 
             > <small>It's not gurantee write on materialized view, 
-              but well design clause eventually consistency within eye blink.</small>
+              but well design cause eventually consistency within eye blink.</small><!-- .element: class="fragment" -->
 
             ----
 
@@ -376,16 +388,21 @@
             
             <span style="color: yellow;">Spark is a choice</span><!-- .element: class="fragment" -->
             
-            <img src="images/spark-cassandra.png" width="300"></img><!-- .element: class="fragment" -->
+            <div>
+              <img src="images/spark-cassandra.png" width="300"></img>
+              <p class="footnote">https://www.slideshare.net/patrickmcfadin/apache-cassandra-apache-spark-for-time-series-data</p>
+            </div><!-- .element: class="fragment" -->
 
             --
 
             Data too large to transfer
             
             <span style="color: yellow;">Place Spark on Cassandra nodes</span><!-- .element: class="fragment" -->
-
-            <img src="images/spark-cassandra-workload-isolation.jpg"></img><!-- .element: class="fragment" -->
-            <p class="footnote">https://openbigdata.wordpress.com/tag/cassandra/</p>
+            
+            <div>
+              <img src="images/spark-cassandra-workload-isolation.jpg"></img>
+              <p class="footnote">https://openbigdata.wordpress.com/tag/cassandra/</p>
+            </div><!-- .element: class="fragment" -->
 
             ----
 
