@@ -3,7 +3,6 @@ import uuid
 import random
 
 from cassandra.cluster import Cluster
-from cassandra.query import BatchStatement
 
 
 one_day = dt.timedelta(days=1)
@@ -48,11 +47,11 @@ all_movies = list(map(
 showing_times = generate_showing_times(all_movies, 30)
 
 ## most direct way to go.
-for time in showing_times:
-    cass_session.execute('''
-        INSERT INTO showing_time(movie_id, date, start_time, cinema)
-        VALUES (%s, %s, %s, %s)
-    ''', time)
+# for time in showing_times:
+#     cass_session.execute('''
+#         INSERT INTO showing_time(movie_id, date, start_time, cinema)
+#         VALUES (%s, %s, %s, %s)
+#     ''', time)
 
 ## alternative on performance, and reuse statemtent on different of time.
 # prepared_stmt = cass_session.prepare('''
@@ -62,20 +61,19 @@ for time in showing_times:
 # for time in showing_times:
 #     cass_session.execute(prepared_stmt, time)
 
-## very high performance, send with bulk statements.
-# prepared_stmt = cass_session.prepare('''
-#         INSERT INTO showing_time(movie_id, date, start_time, cinema)
-#         VALUES (?, ?, ?, ?)
-# ''')
-# batch_stmt = BatchStatement()
+# very high performance, execute them asyc.
+prepared_stmt = cass_session.prepare('''
+        INSERT INTO showing_time(movie_id, date, start_time, cinema)
+        VALUES (?, ?, ?, ?)
+''')
 
-# for idx, time in enumerate(showing_times):
-#     batch_stmt.add(prepared_stmt, time)
-#     if idx > 0 and not idx % 100:
-#         cass_session.execute(batch_stmt)
-#         batch_stmt = BatchStatement()
+result_sets = []
 
-# cass_session.execute(batch_stmt)
+for time in showing_times:
+    result_sets.append(cass_session.execute_async(prepared_stmt, time))
+
+for result_set in result_sets:
+    result_set.result()
 
 
 cass_session.shutdown()

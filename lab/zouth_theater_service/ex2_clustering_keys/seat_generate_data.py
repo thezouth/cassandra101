@@ -3,7 +3,6 @@ import uuid
 import random
 
 from cassandra.cluster import Cluster
-from cassandra.query import BatchStatement
 
 STANDARD_ROW = 4
 DELUX_ROW = 1
@@ -57,15 +56,15 @@ prepared_stmt = cass_session.prepare('''
         INSERT INTO seat(movie_id, date, start_time, cinema, row, col, seat_type, price)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 ''')
-batch_stmt = BatchStatement()
 
-for idx, seat in enumerate(all_seats):
-    batch_stmt.add(prepared_stmt, seat)
-    if idx > 0 and not idx % 100:
-        cass_session.execute(batch_stmt)
-        batch_stmt = BatchStatement()
+result_sets = []
 
-cass_session.execute(batch_stmt)
+for seat in all_seats:
+    result_sets.append(cass_session.execute_async(prepared_stmt, seat))
+
+for result_set in result_sets:
+    result_set.result()
+
 
 cass_session.shutdown()
 cass_cluster.shutdown()
