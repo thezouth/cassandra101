@@ -35,13 +35,25 @@
         font-size: 30%;
         text-align: center;
       }
+      .slides .footer{
+        bottom: 0;
+        left: 1000px;
+        right: 0;
+      }
     </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
-          <img width="420" src="images/cassandra_logo.png">
+        <section data-background="#90bd50">
+          <img style="padding-top:200px;" width="600" src="images/cassandra_logo.png">
+          <div style="padding-top:100px;">
+            <span>
+              <img width="60" src="images/webscal3r_logo.png">
+              <img width="300" src="images/sprint3r-cover.png">
+              <img width="60" src="images/zouth_logo.png">
+            </span>
+          </div>
         </section>
         <section data-markdown
           data-separator="^----\n$"
@@ -234,6 +246,19 @@
 
             ```
             $ nodetool [options] command [args]
+            ```
+
+            ```
+            $ nodetool status mykeyspace
+
+            Datacenter: datacenter1
+            =======================
+            Status=Up/Down
+            |/ State=Normal/Leaving/Joining/Moving
+            --  Address    Load       Tokens  Owns    Host ID                               Rack
+            UN  127.0.0.1  47.66 KB   1       33.3%   aaa1b7c1-6049-4a08-ad3e-3697a0e30e10  rack1
+            UN  127.0.0.2  47.67 KB   1       33.3%   1848c369-4306-4874-afdf-5c1e95b8732e  rack1
+            UN  127.0.0.3  47.67 KB   1       33.3%   49578bf1-728f-438d-b1c1-d8dd644b6f7f  rack1
             ```
 
             ----
