@@ -15,8 +15,7 @@ for idx, row in source_data.iterrows():
     length = int(row.duration)
 
     cass_session.execute('''
-        INSERT INTO showing_movie (id, title, genre, length)
-        VALUES (%s, %s, %s, %s)
+        [Fill your answer here!]
     ''', (movie_id, title, genre, length))
 
 cass_session.shutdown()

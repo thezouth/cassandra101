@@ -11,7 +11,7 @@ from .. import app, cass_session
 @app.route('/showing-movies', methods=['GET'])
 def list_showing_movies():
     '''Ex.1.1 Getting all movies from Cassandra'''
-    all_movies = cass_session.execute('SELECT id, title FROM showing_movie')
+    all_movies = cass_session.execute('[Fill your answer here!]')
     return jsonify([
         {'id': movie.id, 'title': movie.title}
         for movie in all_movies
@@ -24,7 +24,7 @@ def get_showing_movie(movie_id):
     Ex.1.2 Getting individual data from a specific movie.
     '''
     movies = cass_session.execute(
-        'SELECT id, title, genre, length from showing_movie WHERE id = %s',
+        '[Fill your answer here!]',
         (uuid.UUID(movie_id),)
     )
 

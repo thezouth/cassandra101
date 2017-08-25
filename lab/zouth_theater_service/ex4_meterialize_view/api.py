@@ -10,7 +10,7 @@ def get_movie_titles(movie_ids):
     def query():
         return [
             cass_session.execute_async(
-                'SELECT id, title FROM showing_movie WHERE id = %s', 
+                '[Fill your answer here!]',
                 (movie_id,))
             for movie_id in movie_ids
         ]
@@ -29,9 +29,7 @@ def get_movie_titles(movie_ids):
 def get_member_tickets(member_id):
     available_tickets = cass_session.execute(
         '''
-        SELECT show_date, show_time, movie_id, cinema, row, col
-        FROM ticket_by_member
-        WHERE member_id = %s AND show_date >= %s
+        [Fill your answer here!]
         ''',
         (member_id, dt.date.today())
     )
@@ -41,14 +39,14 @@ def get_member_tickets(member_id):
         movie_titles = get_movie_titles(set(map(lambda t: t.movie_id, available_tickets_list)))
 
         return jsonify([
-            { 
+            {
                 'showDate': ticket.show_date.date().strftime('%Y-%m-%d'),
                 'showTime': ticket.show_time.time().strftime('%H:%M'),
                 'cinema': ticket.cinema,
                 'movieId': ticket.movie_id,
                 'movieTitle': movie_titles[ticket.movie_id],
                 'row': ticket.row,
-                'col': ticket.col   
+                'col': ticket.col
             }
             for ticket in available_tickets_list
         ])

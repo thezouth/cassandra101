@@ -20,16 +20,14 @@ def get_showing_time(movie_id, date_param):
     if date == date.today():
         showing_times = cass_session.execute(
             '''
-            SELECT start_time, cinema from showing_time
-            WHERE movie_id = %s AND date = %s AND start_time > %s
+            [Fill your answer here!]
             ''',
             (uuid.UUID(movie_id), date, dt.datetime.now().time())
         )
     else:
         showing_times = cass_session.execute(
             '''
-            SELECT start_time, cinema from showing_time
-            WHERE movie_id = %s AND date = %s
+            [Fill your answer here!]
             ''',
             (uuid.UUID(movie_id), date)
         )
@@ -50,18 +48,19 @@ def get_seats(movie_id, datetime, cinema):
 
     seats = cass_session.execute(
         '''
-        SELECT row, col, seat_type, price FROM seat
-        WHERE movie_id = %s AND date = %s AND start_time = %s AND cinema = %s
+        [Fill your answer here!]
         ''',
         query_param
     )
 
-    booked_seates_result = cass_session.execute(
-        'SELECT row, col FROM ticket_by_seat WHERE movie_id = %s AND show_date = %s AND show_time = %s AND cinema = %s',
-        query_param
-    )
+    # booked_seates_result = cass_session.execute(
+    #     '[Fill your answer here!]',
+    #     query_param
+    # )
 
-    booked_seates_set = set(map(lambda seat: (seat.row, seat.col), booked_seates_result))
+    # booked_seates_set = set(map(lambda seat: (seat.row, seat.col), booked_seates_result))
+    
+    booked_seates_set = set()
 
     return jsonify([
         {

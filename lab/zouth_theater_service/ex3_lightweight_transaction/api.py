@@ -15,8 +15,7 @@ def book_seat(movie_id, datetime, cinema, row, col):
 
     result_set = cass_session.execute(
         '''
-        INSERT INTO ticket_by_seat (movie_id, show_date, show_time, cinema, row, col, member_id, price)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s) IF NOT EXISTS
+        [Fill your answer here!]
         ''',
         (uuid.UUID(movie_id), date_object.date(), date_object.time(), cinema, row, col, member_id, price)
     )

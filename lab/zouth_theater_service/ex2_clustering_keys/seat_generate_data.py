@@ -54,8 +54,7 @@ all_seats = generate_data(all_show_times)
 
 # very high performance, send with bulk statements.
 prepared_stmt = cass_session.prepare('''
-        INSERT INTO seat(movie_id, date, start_time, cinema, row, col, seat_type, price)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    [Fill your answer here!]
 ''')
 batch_stmt = BatchStatement()
 
