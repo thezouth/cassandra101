@@ -81,7 +81,7 @@
             ----
 
             ### Sharding ###
-            - Sharding key
+            - Partition
             - Hot shard!!! <!-- .element: class="fragment" -->
             - Scale??? <!-- .element: class="fragment" -->
 
@@ -90,7 +90,7 @@
             - can mixed with master-slave
             - Hot shard, Scale
               - need to reshard
-
+            - multi write conflict?
 
             ----
 
@@ -126,7 +126,49 @@
 
             ----
 
+            ### Configuration ###
+
+            ```yaml
+            cluster_name: 'Geeky Cluster'
+
+            num_tokens: 256
+
+            data_file_directories:
+                - /var/lib/cassandra/data
+
+            commitlog_directory: /var/lib/cassandra/commitlog 
+
+            seed_provider:
+                # Addresses of hosts that are deemed contact points. 
+                # Cassandra nodes use this list of hosts to find each other and learn
+                # the topology of the ring.  You must change this if you are running
+                # multiple nodes!
+                - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+                  parameters:
+                      # seeds is actually a comma-delimited list of addresses.
+                      # Ex: "<ip1>,<ip2>,<ip3>"
+                      - seeds: "cassandra001,cassandra002"
+
+            listen_interface: eth0
+
+            rpc_interface: eth0
+
+            endpoint_snitch: GossipingPropertyFileSnitch
+            ```
+
+
+
+
+            ----
+
             ### Write Path ###
+
+            - logging data in commit log
+            - write data to memtable
+            - flush data from memtable
+            - store data on disk in SSTable
+
+            <img src="images/write-process.png" width="420" style="background-color: white">
 
             ----
 
