@@ -49,31 +49,28 @@ showing_times = generate_showing_times(all_movies, 30)
 ## most direct way to go.
 # for time in showing_times:
 #     cass_session.execute('''
-#         INSERT INTO showing_time(movie_id, date, start_time, cinema)
-#         VALUES (%s, %s, %s, %s)
+#         [Fill your answer here!]
 #     ''', time)
 
 ## alternative on performance, and reuse statemtent on different of time.
 # prepared_stmt = cass_session.prepare('''
-#         INSERT INTO showing_time(movie_id, date, start_time, cinema)
-#         VALUES (?, ?, ?, ?)
+#         [Fill your answer here!]
 # ''')
 # for time in showing_times:
 #     cass_session.execute(prepared_stmt, time)
 
 # very high performance, execute them asyc.
-prepared_stmt = cass_session.prepare('''
-        INSERT INTO showing_time(movie_id, date, start_time, cinema)
-        VALUES (?, ?, ?, ?)
-''')
+# prepared_stmt = cass_session.prepare('''
+#     [Fill your answer here!]
+# ''')
 
-result_sets = []
+# result_sets = []
 
-for time in showing_times:
-    result_sets.append(cass_session.execute_async(prepared_stmt, time))
+# for time in showing_times:
+#     result_sets.append(cass_session.execute_async(prepared_stmt, time))
 
-for result_set in result_sets:
-    result_set.result()
+# for result_set in result_sets:
+#     result_set.result()
 
 
 cass_session.shutdown()
