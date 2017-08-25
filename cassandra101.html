@@ -250,6 +250,81 @@
 
             <!-- --attr=data-background="white" -->
             <img src="images/arc_read-single_dc.svg" width="420">
+            
+            ----
+            
+            ### Data Modeling ###
+            
+            ----
+
+            ### Primary Key ###
+            <span style="color: yellow;">Partition concept</span> is embed in Primary Key
+            
+            <p>Node = Hash(Tokenize(Parition Key))</p>
+            <img src="images/cassandra_token_wo_vnodes.png" width="300"></img>
+
+            > <small>Optimize Read? Read one node at a time</small> <!-- .element: class="fragment" -->
+
+            --
+
+            ### Know your data 'n hardware ###
+            - Max(Node) = Cardinality(Partition Key) <!-- .element: class="fragment" -->
+            - How balance of data in each partition? <!-- .element: class="fragment" -->
+            - Read / Write behaviour. <!-- .element: class="fragment" -->
+            
+            ----
+
+            ### Cassandra is <span style="color: yellow;">Wide-Column Family</span> ###
+            
+            > <small>CREATE TABLE web_log (user_id, access_time, path, server <br/>
+              PRIMARY KEY((user_id), access_time));
+
+
+              | user_id = 0 | access_time = t1 | access_time = t2 | access_time = t3 |
+              | ------------- |-------------|-------------|-----|
+              | | path = "..." | path = "..." | path = "..." |
+              | | server = "..." | server = "..." | server = "..." |
+              | user_id = 1 | access_time = t2 | access_time = t3
+              | | path = "..." | path = "..." |
+              | | server = "..." | server = "..." |
+
+            > You can query clustering key as range <!-- .element: class="fragment" -->
+            --
+
+            ### Cassandra was born in "HDD" era ###
+            
+
+            <img src="images/hdd.png" width="420"></img>
+
+            --
+            
+            ### Know your data ##
+            - How you read the data? <!-- .element: class="fragment" -->
+            - Wide partition cause bigger range to search <!-- .element: class="fragment" -->
+            - Primary Key is not only identity of data, it's how data is arranged. <!-- .element: class="fragment" -->
+
+            ----
+
+            ### Lightweight Transactions (Compare-and-set) ###
+
+            ----
+
+            
+            ### Materialize View Rule ###
+            
+            - PK(base table) ⊆ PK(materialized view)
+            - PK(materialized table) - PK(base table) <= 1
+            
+            --
+
+            ### Materialize view machnism ###
+
+            <img src="images/materialized-view-process.png" 
+                 style="background: #fff;"
+                 width="700"></img>
+
+            > <small>It's not gurantee write on materialized view, 
+              but well design clause eventually consistency within eye blink.</small>
 
             ----
 
@@ -258,7 +333,6 @@
             - Different workload
               - Realtime
               - Analytic
-
 
             --
 
