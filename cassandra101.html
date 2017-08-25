@@ -39,23 +39,62 @@
           data-separator="^----\n$"
           data-separator-vertical="^--\n$"
           data-separator-notes="^Note:"
-          data-attributes="--attr=(.*?)$" >
+          data-attributes="--attr=(.*?)$">
           <script type="text/template">
-            ### Target Audiences ###
+            ### What's covered ###
 
-            - Familiar with RDBMS <!-- .element: class="fragment" -->
-              * CQL is similar to SQL, but not all  <!-- .element: class="fragment" -->
+            --
 
-            - Know basic programming in Python <!-- .element: class="fragment" -->
-              * Define and use variables, functions <!-- .element: class="fragment" -->
-              * Import external library into script <!-- .element: class="fragment" -->
+            - Understanding the good and bad points between Cassandra and other database <!-- .element: class="fragment" -->
 
-            - Know basic commands in Unix <!-- .element: class="fragment" -->
-              * Use SSH to connect remote host <!-- .element: class="fragment" -->
-              * Manage with files on Linux server <!-- .element: class="fragment" -->
+            - Become beginner's mind to start to develop an application with Cassandra <!-- .element: class="fragment" -->
+
+              *After the course, you still have many things to study further* <!-- .element: class="fragment" -->
+
+            --
+
+            ### What's not covered ###
+
+            - Operation Management: *monitoring, customize configuration and etc.*
+
+            - Multiple Datacenter: *multple geolocated datacenter, in the same cluster*
 
             ----
 
+            ### Target Audiences ###
+
+            --
+
+            - Familiar with RDBMS <!-- .element: class="fragment" -->
+
+              *CQL is similar to SQL, but not all*  <!-- .element: class="fragment" -->
+
+            --
+
+            - Basic programming in Python <!-- .element: class="fragment" -->
+
+              *Define variables, functions* <!-- .element: class="fragment" -->
+
+              *Import library into script* <!-- .element: class="fragment" -->
+
+            --
+
+            - Basic skill in Unix environment <!-- .element: class="fragment" -->
+
+              *Use SSH to connect remote host* <!-- .element: class="fragment" -->
+
+              *Manage with files on Linux server* <!-- .element: class="fragment" -->
+
+            ----
+
+          </script>
+        </section>
+        <section data-markdown
+          data-separator="^----\n$"
+          data-separator-vertical="^--\n$"
+          data-separator-notes="^Note:"
+          data-attributes="--attr=(.*?)$" >
+          <script type="text/template">
             ### Apache Cassandra ###
 
             - Distributed <!-- .element: class="fragment" -->
@@ -151,10 +190,10 @@
             data_file_directories:
                 - /var/lib/cassandra/data
 
-            commitlog_directory: /var/lib/cassandra/commitlog 
+            commitlog_directory: /var/lib/cassandra/commitlog
 
             seed_provider:
-                # Addresses of hosts that are deemed contact points. 
+                # Addresses of hosts that are deemed contact points.
                 # Cassandra nodes use this list of hosts to find each other and learn
                 # the topology of the ring.  You must change this if you are running
                 # multiple nodes!
@@ -277,7 +316,7 @@
         ]
       });
 
-      Reveal.configure({ 
+      Reveal.configure({
         slideNumber: 'c/t',
         history: true
       });
