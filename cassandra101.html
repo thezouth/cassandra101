@@ -421,6 +421,59 @@
 
             ----
 
+            Last write win!
+
+            > No Data = never write ? <!-- .element: class="fragment" -->
+
+            --
+
+            ### Tombstone ###
+
+            <img src="images/tombstone.jpg" width="500"></img>
+
+            --
+
+            Die, but not disappear
+
+            <p style="text-align: left; font-size: 20px; padding-left: 320px;">
+              <span style="color: grey">record01 [deleted] </span><br />
+              <span style="color: grey">record02 [deleted] </span><br />
+              <span style="color: grey">record03 [deleted] </span><br />
+              <span style="color: grey">record04 [deleted] </span><br />
+              <span style="color: grey">record05 [deleted] </span><br />
+              <span style="color: grey">record06 [deleted] </span><br />
+              <span style="color: grey">record07 [deleted] </span><br />
+              <span style="color: grey">record08 [deleted] </span><br />
+              <span style="color: grey">record09 [deleted] </span><br />
+              <span style="color: grey">record10 [deleted] </span><br />
+              record11  <br />
+              record12  <br />
+              record13  <br />
+            </p>
+
+            ----
+
+            SSTable is immutable
+
+
+            <img src="images/write-process.png" style="background: #fff;"></img>
+            
+            
+            <small>No update-in-place is done</small>
+
+            --
+
+            Compaction
+
+            <img src="images/compaction-size-tried.png"></img>
+
+
+            --
+
+            Phantom Record
+
+            ----
+
             ### Multiple Datacenter ###
             - Disaster recover
             - Different workload
