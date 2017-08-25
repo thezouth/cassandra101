@@ -27,7 +27,7 @@
         border:none;
         box-shadow:none;
       }
-      .slides .footnote{
+      .slides .footnote {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -35,29 +35,25 @@
         font-size: 30%;
         text-align: center;
       }
-      .slides .footer{
-        bottom: 0;
-        left: 1000px;
-        right: 0;
+      .slides table.footer td {
+        border: none;
+        text-align: center;
+        font-size: 30%;
       }
+
     </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-background="#90bd50">
-          <img style="padding-top:200px;" width="600" src="images/cassandra_logo.png">
-          <div style="padding-top:100px;">
-            <table>
+        <section data-background="white">
+          <img width="400" src="images/cassandra_logo2.png">
+          <div>
+            <table class="footer">
               <tr>
-                <td><img width="60" src="images/webscal3r_logo.png"></td>
-                <td><img width="300" src="images/sprint3r-cover.png"></td>
-                <td><img width="60" src="images/zouth_logo.png"></td>
-              </tr>
-              <tr style="text-align:center; font-size: 30%">
-                <td>webscal3r.club</td>
-                <td style="text-align:center;">sprint3r.com</td>
-                <td>the Zouth Team</td>
+                <td><img width="60" src="images/webscal3r_logo.png"><br>webscal3r.club</td>
+                <td><img width="300" src="images/sprint3r-cover.png"><br>sprint3r.com</td>
+                <td><img width="60" src="images/zouth_logo.png"><br>the Zouth Team</td>
               </tr>
             </table>
           </div>
@@ -244,20 +240,32 @@
 
             ----
 
-
             ### Installation & Configuration ###
 
-            ----
+            --
+
+            ### Installation ###
+
+            http://cassandra.apache.org/download/
+
+            ```bash
+            $ wget http://archive.apache.org/dist/cassandra/3.9/apache-cassandra-3.9-bin.tar.gz
+            $ tar -xvf apache-cassandra-3.9-bin.tar.gz
+            ```
+
+            --
 
             ### Configuration ###
+
+            `cassandra.yaml`
 
             ```yaml
             cluster_name: 'Geeky Cluster'
 
-            data_file_directories:
-                - /var/lib/cassandra/data
+            # data_file_directories:
+            #     - /var/lib/cassandra/data
 
-            commitlog_directory: /var/lib/cassandra/commitlog
+            # commitlog_directory: /var/lib/cassandra/commitlog
 
             listen_interface: eth0
 
@@ -267,6 +275,20 @@
             Note:
               - separate commitlog and datalog dir for performance (on HDD)
               - use difference interface between serving client  and cassandra internal usage
+
+            --
+
+            ### Running ###
+
+            ```bash
+            $ bin/cassandra -f
+            ```
+
+            Note:
+            ```
+            $ bin/cassandra -Dcassandra.config=file:///`pwd`/conf/cassandra.yaml
+            ```
+
 
             ----
 
