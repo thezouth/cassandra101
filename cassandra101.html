@@ -35,14 +35,34 @@
         font-size: 30%;
         text-align: center;
       }
+      .slides .footer{
+        bottom: 0;
+        left: 1000px;
+        right: 0;
+      }
     </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
-          <img width="420" src="images/cassandra_logo.png">
+        <section data-background="#90bd50">
+          <img style="padding-top:200px;" width="600" src="images/cassandra_logo.png">
+          <div style="padding-top:100px;">
+            <table>
+              <tr>
+                <td><img width="60" src="images/webscal3r_logo.png"></td>
+                <td><img width="300" src="images/sprint3r-cover.png"></td>
+                <td><img width="60" src="images/zouth_logo.png"></td>
+              </tr>
+              <tr style="text-align:center; font-size: 30%">
+                <td>webscal3r.club</td>
+                <td style="text-align:center;">sprint3r.com</td>
+                <td>the Zouth Team</td>
+              </tr>
+            </table>
+          </div>
         </section>
+
         <section data-markdown
           data-separator="^----\n$"
           data-separator-vertical="^--\n$"
@@ -53,19 +73,19 @@
 
             --
 
-            - Understanding the good and bad points between Cassandra and other database <!-- .element: class="fragment" -->
+            - To understand the advantages and disadvantages between Cassandra and other database
 
             - Become beginner's mind to start to develop an application with Cassandra <!-- .element: class="fragment" -->
 
-              *After the course, you still have many things to study further* <!-- .element: class="fragment" -->
+              *After the course, you still have to study further* <!-- .element: class="fragment" -->
 
             --
 
             ### What's not covered ###
 
-            - Operation Management: *monitoring, customize configuration and etc.*
+            - <p>Operation Management - *monitoring, customize configuration and etc.*</p> <!-- .element: class="fragment" -->
 
-            - Multiple Datacenter: *multple geolocated datacenter, in the same cluster*
+            - <p>Multiple Datacenter - *multple geolocated datacenter, in the same cluster*</p> <!-- .element: class="fragment" -->
 
             ----
 
@@ -73,13 +93,13 @@
 
             --
 
-            - Familiar with RDBMS <!-- .element: class="fragment" -->
+            Familiar with RDBMS
 
               *CQL is similar to SQL, but not all*  <!-- .element: class="fragment" -->
 
             --
 
-            - Basic programming in Python <!-- .element: class="fragment" -->
+            Basic programming in Python
 
               *Define variables, functions* <!-- .element: class="fragment" -->
 
@@ -87,16 +107,128 @@
 
             --
 
-            - Basic skill in Unix environment <!-- .element: class="fragment" -->
+            Basic skill in Unix environment
 
               *Use SSH to connect remote host* <!-- .element: class="fragment" -->
 
               *Manage with files on Linux server* <!-- .element: class="fragment" -->
 
-            ----
+          </script>
+        </section>
+
+        <section data-markdown
+          data-separator="^----\n$"
+          data-separator-vertical="^--\n$"
+          data-separator-notes="^Note:"
+          data-attributes="--attr=(.*?)$">
+          <script type="text/template">
+            ### Little bits of database scaling ###
+
+            --
+
+            Once upon a time, we have a *Single* database
+
+            --
+
+            With popularity, now it's a *Rock Star* !!
+
+            --
+
+            Upsizing - the blue pill?
+
+            <!-- Image: upsizing database machine -->
+
+            --
+
+            Easiest to start, but harder to go on
+              - Hardware <!-- .element: class="fragment" -->
+              <!-- Image: cost of vertifcally scale graph -->
+              - Software <!-- .element: class="fragment" -->
+              <!-- Image: Llicense cose of vertically scale -->
+
+            --
+
+            Are you DEFEATED with it?
+
+            Or, you will DIVIDE it. <!-- .element: class="fragment" -->
+
+            --
+
+            ### Read Contention ###
+
+            --
+
+            ### Replication ###
+
+            --
+
+            We have many replicas, how can we update?
+
+            --
+
+            ### Master-slave ###
+
+            Read from multiple replicas. <!-- .element: class="fragment" -->
+
+            Write into one replica (leader) <!-- .element: class="fragment" -->
+
+
+            --
+
+            ### Write Contention ###
+
+            --
+
+            ### Multiple master-slave ###
+
+            --
+
+            ### Sharding ###
+
+            --
+
+            ### Shard Key & Function ###
+
+            --
+
+            ### Where to apply sharding ###
+
+            - Application - data access library  <!-- .element: class="fragment" -->
+
+            - Middleware - manage data via it <!-- .element: class="fragment" -->
+
+            --
+
+            ### One problem resolved <br/> New problem borns ###
+
+            --
+
+            ### Hot Shard ###
+
+            * <p>In Design: (Know data)<br/>
+              *Good* shard key & function prevent it.</p>
+
+            * <p>In Operation: (Know current data)<br/>
+              *Better* shard key & function resolve it.</p>
+
+            --
+
+            ### Resharding ###
+
+            * <p>Sharding key or function changes</p>
+            * <p>Scaling up/down database cluster</p>
+
+            --
+
+            ### Single Point Of Failure ###
+
+            * Different function responsibility in database cluster.
+
+            * Service available unless no component left in a function.
 
           </script>
         </section>
+
         <section data-markdown
           data-separator="^----\n$"
           data-separator-vertical="^--\n$"
@@ -112,81 +244,6 @@
 
             ----
 
-            ### ACID ###
-            - Atomicity <!-- .element: class="fragment" -->
-            - Consistency <!-- .element: class="fragment" -->
-            - Isolation <!-- .element: class="fragment" -->
-            - Durability <!-- .element: class="fragment" -->
-
-            Note:
-            - Database Properties
-
-            ----
-
-            ### Scaling ###
-              - read workload <!-- .element: class="fragment" -->
-              - write workload <!-- .element: class="fragment" -->
-
-            Note:
-            - why scale? (more usage, fault tolerance)
-            - scale type (vertical / horizontal)
-
-            ----
-
-            ### Master-Slave ###
-            - Replication
-
-            Note:
-            - scale read
-            - write to master
-
-            ----
-
-            ### Sharding ###
-            - Partition
-            - Hot shard!!! <!-- .element: class="fragment" -->
-            - Scale??? <!-- .element: class="fragment" -->
-
-            Note:
-            - scale write
-            - can mixed with master-slave
-            - Hot shard, Scale
-              - need to reshard
-            - multi write conflict?
-
-            ----
-
-            ### CAP ###
-            - Consistency <!-- .element: class="fragment" -->
-            - Availability <!-- .element: class="fragment" -->
-            - Partition Tolerance <!-- .element: class="fragment" -->
-
-            Note:
-            - choose 2 from 3 !BUT! it is loosen one constraint
-
-            --
-
-            ### Consistency Level ###
-            - Write
-            - Read
-            - Quorum
-            - Strong Consistency
-
-            --
-
-            ### Example ###
-            - Write / Read replication factor = 3
-
-            ----
-
-            ### Cassandra ###
-
-            <div>
-              <img src="images/cassandra_troy.png" width="420">
-              <p class="footnote">Cassandra by Evelyn De Morgan (1898, London); Cassandra in front of the burning city of Troy at the peak of her insanity.</p>
-            </div> <!-- .element: class="fragment" -->
-
-            ----
 
             ### Installation & Configuration ###
 
@@ -197,31 +254,15 @@
             ```yaml
             cluster_name: 'Geeky Cluster'
 
-            num_tokens: 256
-
             data_file_directories:
                 - /var/lib/cassandra/data
 
             commitlog_directory: /var/lib/cassandra/commitlog
 
-            seed_provider:
-                # Addresses of hosts that are deemed contact points.
-                # Cassandra nodes use this list of hosts to find each other and learn
-                # the topology of the ring.  You must change this if you are running
-                # multiple nodes!
-                - class_name: org.apache.cassandra.locator.SimpleSeedProvider
-                  parameters:
-                      # seeds is actually a comma-delimited list of addresses.
-                      # Ex: "<ip1>,<ip2>,<ip3>"
-                      - seeds: "cassandra001,cassandra002"
-
             listen_interface: eth0
 
             rpc_interface: eth0
-
-            endpoint_snitch: GossipingPropertyFileSnitch
             ```
-
 
             Note:
               - separate commitlog and datalog dir for performance (on HDD)
@@ -236,66 +277,87 @@
             $ nodetool [options] command [args]
             ```
 
+            ```
+            $ nodetool status mykeyspace
+
+            Datacenter: datacenter1
+            =======================
+            Status=Up/Down
+            |/ State=Normal/Leaving/Joining/Moving
+            --  Address    Load       Tokens  Owns    Host ID                               Rack
+            UN  127.0.0.1  47.66 KB   1       33.3%   aaa1b7c1-6049-4a08-ad3e-3697a0e30e10  rack1
+            UN  127.0.0.2  47.67 KB   1       33.3%   1848c369-4306-4874-afdf-5c1e95b8732e  rack1
+            UN  127.0.0.3  47.67 KB   1       33.3%   49578bf1-728f-438d-b1c1-d8dd644b6f7f  rack1
+            ```
+
             ----
+
+            <!-- --attr=data-background="white" -->
 
             ### Write Path ###
 
+            <img src="images/write-process.png" width="700" style="background-color: white">
+
+            Note: 
             - logging data in commit log
             - write data to memtable
             - flush data from memtable
             - store data on disk in SSTable
-
-            <img src="images/write-process.png" width="420" style="background-color: white">
-
+            - remove flushed-data from commit-log
             --
 
             <!-- --attr=data-background="white" -->
-            <img src="images/arc_write-single_dc.png" width="420">
+            <img src="images/arc_write-single_dc.png" width="500">
 
             ----
 
+            <!-- --attr=data-background="white" -->
             ### Read Path ###
 
-            <img src="images/caching-reads.png" width="420" style="background-color: white">
+            <img src="images/caching-reads.png" width="700" style="background-color: white">
 
             --
 
             <!-- --attr=data-background="white" -->
-            <img src="images/arc_read-single_dc.svg" width="420">
-            
+            <img src="images/arc_read-single_dc.svg" width="500">
+
             ----
 
             ### Data Modeling ###
-            
+
             ----
 
             ### Primary Key ###
             <span style="color: yellow;">Partitioning concept</span> is embed in Primary Key
-            
+
             <p>Hash(Tokenize(Parition Key)) = Node</p>
             <img src="images/cassandra_token_wo_vnodes.png" width="300"></img>
-            
+
             --
 
             > Optimize Read?
-            
-            Read one node at a time <!-- .element: class="fragment" -->
+
+            Read at one node at a time <!-- .element: class="fragment" -->
 
             --
 
             ### Know your data 'n hardware ###
-            - Max(Node) = Cardinality(Partition Key) <!-- .element: class="fragment" -->
+            - Cardinality of Partition Key <!-- .element: class="fragment" -->
             - How balance of data in each partition? <!-- .element: class="fragment" -->
             - Read / Write behaviour. <!-- .element: class="fragment" -->
-            
+
+            Note:
+            Read from only one node is possible.
+            Write to as many as possible node.
+
             ----
 
             Cassandra is <span style="color: yellow;">Wide-Column</span> Store
 
             --
-            
+
             > <small>CREATE TABLE web_log (user_id, access_time, path, server <br/>
-              PRIMARY KEY((user_id), access_time));
+              PRIMARY KEY((user_id), access_time);
 
 
               | user_id = 0 | access_time = t1 | access_time = t2 | access_time = t3 |
@@ -309,25 +371,40 @@
             --
 
             > You can query clustering key as range
-            
-            --
 
-            Cassandra was born in "HDD" era
+            --
             
+            Cassandra was born in "HDD" era
+
 
             <img src="images/hdd.png" width="420"></img>
 
             --
-            
+
             ### Know your data ##
-            
-            - Read as structed. <!-- .element: class="fragment" -->
-            
+
+            - Design by Query. <!-- .element: class="fragment" -->
+
             - Wide partition cause bigger range to search <!-- .element: class="fragment" -->
-            
+
             - Primary Key is not only identity of data, it's how data is arranged. <!-- .element: class="fragment" -->
 
             ----
+            
+            ### Transaction ###
+
+            --
+
+            ### ACID ###
+            - Atomicity <!-- .element: class="fragment" -->
+            - Consistency <!-- .element: class="fragment" -->
+            - Isolation <!-- .element: class="fragment" -->
+            - Durability <!-- .element: class="fragment" -->
+
+            Note:
+            - Database Properties
+
+            --
 
             ### Lightweight Transactions ###
 
@@ -339,44 +416,44 @@
 
             --
 
-            UPDATE ... IF xxx = "value"
+            UPDATE ... IF column = "value"
 
             --
 
-            DELETE ... IF xxx = "value"
+            DELETE ... IF column = "value"
 
             ----
 
             ### Materialize View ###
 
             Indexed view
-            
+
             It's just another table.
 
             --
 
-            
+
             ### Rule ###
-            
+
             PK(base table) ⊆ PK(materialized view)
-            
+
             n(PK(materialized table) - PK(base table)) <= 1
-            
+
             --
 
             ### Materialize view machnism ###
 
-            <img src="images/materialized-view-process.png" 
+            <img src="images/materialized-view-process.png"
                  style="background: #fff;"
                  width="700"></img>
 
-            > <small>It's not gurantee write on materialized view, 
+            > <small>It's not gurantee write on materialized view,
               but well design cause eventually consistency within eye blink.</small><!-- .element: class="fragment" -->
 
             ----
 
             ### Whole table processing ###
-            
+
             --
 
             Data size fit to memory
@@ -385,9 +462,9 @@
             --
 
             Data size is more than memory of my computer,
-            
+
             <span style="color: yellow;">Spark is a choice</span><!-- .element: class="fragment" -->
-            
+
             <div>
               <img src="images/spark-cassandra.png" width="300"></img>
               <p class="footnote">https://www.slideshare.net/patrickmcfadin/apache-cassandra-apache-spark-for-time-series-data</p>
@@ -396,9 +473,9 @@
             --
 
             Data too large to transfer
-            
+
             <span style="color: yellow;">Place Spark on Cassandra nodes</span><!-- .element: class="fragment" -->
-            
+
             <div>
               <img src="images/spark-cassandra-workload-isolation.jpg"></img>
               <p class="footnote">https://openbigdata.wordpress.com/tag/cassandra/</p>
@@ -423,9 +500,18 @@
 
             Last write win!
 
-            > No Data = never write ? <!-- .element: class="fragment" -->
+            <blockquote>No Data = never write ? </blockquote> <!-- .element: class="fragment" -->
 
             --
+
+            ### Cassandra ###
+            
+            <div>
+              <img src="images/cassandra_troy.png" width="420">
+              <p class="footnote">Cassandra by Evelyn De Morgan (1898, London); Cassandra in front of the burning city of Troy at the peak of her insanity.</p>
+            </div> <!-- .element: class="fragment" -->
+
+            ----
 
             ### Tombstone ###
 
@@ -457,8 +543,8 @@
 
 
             <img src="images/write-process.png" style="background: #fff;"></img>
-            
-            
+
+
             <small>No update-in-place is done</small>
 
             --
@@ -479,6 +565,25 @@
             - Different workload
               - Realtime
               - Analytic
+
+            --
+            
+            ### Configuration ###
+
+            ```yaml
+            seed_provider:
+                # Addresses of hosts that are deemed contact points.
+                # Cassandra nodes use this list of hosts to find each other and learn
+                # the topology of the ring.  You must change this if you are running
+                # multiple nodes!
+                - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+                  parameters:
+                      # seeds is actually a comma-delimited list of addresses.
+                      # Ex: "<ip1>,<ip2>,<ip3>"
+                      - seeds: "cassandra001,cassandra002"
+
+            endpoint_snitch: GossipingPropertyFileSnitch
+            ```
 
             --
 
@@ -522,12 +627,6 @@
             - LOCAL_SERIAL
             - EACH_QUORUM
             - ALL
-
-            --
-
-            <!-- --attr=data-background="white" -->
-            ### Write Request ###
-            <img src="images/arc_write-single_dc.png" width="420">
 
             --
 
