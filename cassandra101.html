@@ -57,7 +57,7 @@
               <tr style="text-align:center; font-size: 30%">
                 <td>webscal3r.club</td>
                 <td style="text-align:center;">sprint3r.com</td>
-                <td>thezouth co., ltd.</td>
+                <td>the Zouth Team</td>
               </tr>
             </table>
           </div>
@@ -193,7 +193,7 @@
 
             ### Where to apply sharding ###
 
-            - Application - data acces library  <!-- .element: class="fragment" -->
+            - Application - data access library  <!-- .element: class="fragment" -->
 
             - Middleware - manage data via it <!-- .element: class="fragment" -->
 
@@ -244,81 +244,6 @@
 
             ----
 
-            ### ACID ###
-            - Atomicity <!-- .element: class="fragment" -->
-            - Consistency <!-- .element: class="fragment" -->
-            - Isolation <!-- .element: class="fragment" -->
-            - Durability <!-- .element: class="fragment" -->
-
-            Note:
-            - Database Properties
-
-            ----
-
-            ### Scaling ###
-              - read workload <!-- .element: class="fragment" -->
-              - write workload <!-- .element: class="fragment" -->
-
-            Note:
-            - why scale? (more usage, fault tolerance)
-            - scale type (vertical / horizontal)
-
-            ----
-
-            ### Master-Slave ###
-            - Replication
-
-            Note:
-            - scale read
-            - write to master
-
-            ----
-
-            ### Sharding ###
-            - Partition
-            - Hot shard!!! <!-- .element: class="fragment" -->
-            - Scale??? <!-- .element: class="fragment" -->
-
-            Note:
-            - scale write
-            - can mixed with master-slave
-            - Hot shard, Scale
-              - need to reshard
-            - multi write conflict?
-
-            ----
-
-            ### CAP ###
-            - Consistency <!-- .element: class="fragment" -->
-            - Availability <!-- .element: class="fragment" -->
-            - Partition Tolerance <!-- .element: class="fragment" -->
-
-            Note:
-            - choose 2 from 3 !BUT! it is loosen one constraint
-
-            --
-
-            ### Consistency Level ###
-            - Write
-            - Read
-            - Quorum
-            - Strong Consistency
-
-            --
-
-            ### Example ###
-            - Write / Read replication factor = 3
-
-            ----
-
-            ### Cassandra ###
-
-            <div>
-              <img src="images/cassandra_troy.png" width="420">
-              <p class="footnote">Cassandra by Evelyn De Morgan (1898, London); Cassandra in front of the burning city of Troy at the peak of her insanity.</p>
-            </div> <!-- .element: class="fragment" -->
-
-            ----
 
             ### Installation & Configuration ###
 
@@ -329,31 +254,15 @@
             ```yaml
             cluster_name: 'Geeky Cluster'
 
-            num_tokens: 256
-
             data_file_directories:
                 - /var/lib/cassandra/data
 
             commitlog_directory: /var/lib/cassandra/commitlog
 
-            seed_provider:
-                # Addresses of hosts that are deemed contact points.
-                # Cassandra nodes use this list of hosts to find each other and learn
-                # the topology of the ring.  You must change this if you are running
-                # multiple nodes!
-                - class_name: org.apache.cassandra.locator.SimpleSeedProvider
-                  parameters:
-                      # seeds is actually a comma-delimited list of addresses.
-                      # Ex: "<ip1>,<ip2>,<ip3>"
-                      - seeds: "cassandra001,cassandra002"
-
             listen_interface: eth0
 
             rpc_interface: eth0
-
-            endpoint_snitch: GossipingPropertyFileSnitch
             ```
-
 
             Note:
               - separate commitlog and datalog dir for performance (on HDD)
@@ -383,30 +292,34 @@
 
             ----
 
+            <!-- --attr=data-background="white" -->
+
             ### Write Path ###
 
+            <img src="images/write-process.png" width="700" style="background-color: white">
+
+            Note: 
             - logging data in commit log
             - write data to memtable
             - flush data from memtable
             - store data on disk in SSTable
-
-            <img src="images/write-process.png" width="420" style="background-color: white">
-
+            - remove flushed-data from commit-log
             --
 
             <!-- --attr=data-background="white" -->
-            <img src="images/arc_write-single_dc.png" width="420">
+            <img src="images/arc_write-single_dc.png" width="500">
 
             ----
 
+            <!-- --attr=data-background="white" -->
             ### Read Path ###
 
-            <img src="images/caching-reads.png" width="420" style="background-color: white">
+            <img src="images/caching-reads.png" width="700" style="background-color: white">
 
             --
 
             <!-- --attr=data-background="white" -->
-            <img src="images/arc_read-single_dc.svg" width="420">
+            <img src="images/arc_read-single_dc.svg" width="500">
 
             ----
 
@@ -424,14 +337,18 @@
 
             > Optimize Read?
 
-            Read one node at a time <!-- .element: class="fragment" -->
+            Read at one node at a time <!-- .element: class="fragment" -->
 
             --
 
             ### Know your data 'n hardware ###
-            - Max(Node) = Cardinality(Partition Key) <!-- .element: class="fragment" -->
+            - Cardinality of Partition Key <!-- .element: class="fragment" -->
             - How balance of data in each partition? <!-- .element: class="fragment" -->
             - Read / Write behaviour. <!-- .element: class="fragment" -->
+
+            Note:
+            Read from only one node is possible.
+            Write to as many as possible node.
 
             ----
 
@@ -440,7 +357,7 @@
             --
 
             > <small>CREATE TABLE web_log (user_id, access_time, path, server <br/>
-              PRIMARY KEY((user_id), access_time));
+              PRIMARY KEY((user_id), access_time);
 
 
               | user_id = 0 | access_time = t1 | access_time = t2 | access_time = t3 |
@@ -456,7 +373,7 @@
             > You can query clustering key as range
 
             --
-
+            
             Cassandra was born in "HDD" era
 
 
@@ -466,13 +383,28 @@
 
             ### Know your data ##
 
-            - Read as structed. <!-- .element: class="fragment" -->
+            - Design by Query. <!-- .element: class="fragment" -->
 
             - Wide partition cause bigger range to search <!-- .element: class="fragment" -->
 
             - Primary Key is not only identity of data, it's how data is arranged. <!-- .element: class="fragment" -->
 
             ----
+            
+            ### Transaction ###
+
+            --
+
+            ### ACID ###
+            - Atomicity <!-- .element: class="fragment" -->
+            - Consistency <!-- .element: class="fragment" -->
+            - Isolation <!-- .element: class="fragment" -->
+            - Durability <!-- .element: class="fragment" -->
+
+            Note:
+            - Database Properties
+
+            --
 
             ### Lightweight Transactions ###
 
@@ -484,11 +416,11 @@
 
             --
 
-            UPDATE ... IF xxx = "value"
+            UPDATE ... IF column = "value"
 
             --
 
-            DELETE ... IF xxx = "value"
+            DELETE ... IF column = "value"
 
             ----
 
@@ -568,9 +500,18 @@
 
             Last write win!
 
-            > No Data = never write ? <!-- .element: class="fragment" -->
+            <blockquote>No Data = never write ? </blockquote> <!-- .element: class="fragment" -->
 
             --
+
+            ### Cassandra ###
+            
+            <div>
+              <img src="images/cassandra_troy.png" width="420">
+              <p class="footnote">Cassandra by Evelyn De Morgan (1898, London); Cassandra in front of the burning city of Troy at the peak of her insanity.</p>
+            </div> <!-- .element: class="fragment" -->
+
+            ----
 
             ### Tombstone ###
 
@@ -626,6 +567,25 @@
               - Analytic
 
             --
+            
+            ### Configuration ###
+
+            ```yaml
+            seed_provider:
+                # Addresses of hosts that are deemed contact points.
+                # Cassandra nodes use this list of hosts to find each other and learn
+                # the topology of the ring.  You must change this if you are running
+                # multiple nodes!
+                - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+                  parameters:
+                      # seeds is actually a comma-delimited list of addresses.
+                      # Ex: "<ip1>,<ip2>,<ip3>"
+                      - seeds: "cassandra001,cassandra002"
+
+            endpoint_snitch: GossipingPropertyFileSnitch
+            ```
+
+            --
 
             ![Cassandra Token](images/cassandra_token_wo_vnodes.png)
 
@@ -667,12 +627,6 @@
             - LOCAL_SERIAL
             - EACH_QUORUM
             - ALL
-
-            --
-
-            <!-- --attr=data-background="white" -->
-            ### Write Request ###
-            <img src="images/arc_write-single_dc.png" width="420">
 
             --
 
