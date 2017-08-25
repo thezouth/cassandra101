@@ -211,7 +211,18 @@
             ```
 
 
+            Note:
+              - separate commitlog and datalog dir for performance (on HDD)
+              - use difference interface between serving client  and cassandra internal usage
 
+            ----
+
+            ### Nodetool ###
+            command line interface for managing cluster
+
+            ```
+            $ nodetool [options] command [args]
+            ```
 
             ----
 
@@ -224,15 +235,23 @@
 
             <img src="images/write-process.png" width="420" style="background-color: white">
 
+            --
+
+            <!-- --attr=data-background="white" -->
+            <img src="images/arc_write-single_dc.png" width="420">
+
             ----
 
             ### Read Path ###
 
             <img src="images/caching-reads.png" width="420" style="background-color: white">
 
+            --
+
+            <!-- --attr=data-background="white" -->
+            <img src="images/arc_read-single_dc.svg" width="420">
+
             ----
-
-
 
             ### Multiple Datacenter ###
             - Disaster recover
@@ -308,17 +327,14 @@
       // - https://github.com/hakimel/reveal.js#configuration
       // - https://github.com/hakimel/reveal.js#dependencies
       Reveal.initialize({
+        slideNumber: 'c/t',
+        history: true,
         dependencies: [
           { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/marked.js' },
           { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/markdown.js' },
           { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js', async: true },
           { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
-      });
-
-      Reveal.configure({
-        slideNumber: 'c/t',
-        history: true
       });
     </script>
   </body>
