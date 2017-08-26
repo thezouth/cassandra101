@@ -2,5 +2,5 @@
 
 ### Theater ER diagram ###
 
-[!theater er diagram](lab/images/lab_theater_er_diagram.jpg)
+[!thearter ER diagram](https://github.com/webscal3r/cassandra101/raw/master/lab/images/lab_theater_er_diagram.jpg)
 
