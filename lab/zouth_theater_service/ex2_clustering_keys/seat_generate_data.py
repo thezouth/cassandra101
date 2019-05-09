@@ -45,7 +45,7 @@ def generate_data(show_times):
         )
 
 
-cass_cluster = Cluster(['localhost'])
+cass_cluster = Cluster(['cassandra'])
 cass_session = cass_cluster.connect('zouth_theater')
 
 all_show_times = cass_session.execute('SELECT * FROM showing_time')

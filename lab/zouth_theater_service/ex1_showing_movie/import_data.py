@@ -3,7 +3,7 @@ import uuid
 
 from cassandra.cluster import Cluster
 
-cass_cluster = Cluster(['localhost'])
+cass_cluster = Cluster(['cassandra'])
 cass_session = cass_cluster.connect('zouth_theater')
 
 source_data = pd.read_csv('movie-original.csv')
